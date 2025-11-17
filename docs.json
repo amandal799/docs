@@ -3,89 +3,186 @@
   "theme": "mint",
   "name": "Mint Starter Kit",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#6F41F9",
+    "light": "#A183FA",
+    "dark": "#5B35CC"
   },
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Getting Started",
         "groups": [
           {
             "group": "Getting started",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
+              "getting-started/overview",
+              "getting-started/key-concepts",
+              "getting-started/for-student",
+              "getting-started/for-teacher",
+              "getting-started/for-admin"
             ]
           },
           {
-            "group": "Customization",
+            "group": "How To Guide",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "how-to-guide/onboard-institute",
+              "how-to-guide/onboard-students",
+              "how-to-guide/onboard-teachers",
+              "how-to-guide/onboard-admins",
+              "how-to-guide/manage-batches",
+              "how-to-guide/manage-courses-targets",
+              "how-to-guide/manage-centres-branches",
+              "how-to-guide/generate-question-paper",
+              "how-to-guide/schedule-test",
+              "how-to-guide/scan-upload-answer-sheets",
+              "how-to-guide/share-test-result",
+              "how-to-guide/challenge-grade",
+              "how-to-guide/create-upload-assignment",
+              "how-to-guide/upload-study-materials",
+              "how-to-guide/make-announcement",
+              "how-to-guide/schedule-lecture"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "Institute Management",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Batches",
             "pages": [
-              "api-reference/introduction"
+              "batches/create-batch",
+              "batches/add-students-to-batch",
+              "batches/edit-batch-details",
+              "batches/inactivate-batch",
+              "batches/delete-batch"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Courses/Targets",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "courses-targets/create-course",
+              "courses-targets/add-subjects",
+              "courses-targets/remove-subjects",
+              "courses-targets/edit-syllabus",
+              "courses-targets/onboard-own-syllabus"
+            ]
+          },
+          {
+            "group": "Centres/Branches",
+            "pages": [
+              "centres-branches/onboard-center",
+              "centres-branches/edit-center-details",
+              "centres-branches/delete-center"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "User Management",
+        "groups": [
+          {
+            "group": "Students",
+            "pages": [
+              "students/onboard-single-student",
+              "students/onboard-students-invite-link",
+              "students/onboard-students-excel",
+              "students/move-student-to-batch",
+              "students/inactivate-student-account",
+              "students/delete-student-account"
+            ]
+          },
+          {
+            "group": "Teachers",
+            "pages": [
+              "teachers/onboard-teachers",
+              "teachers/inactivate-teacher-account",
+              "teachers/delete-teacher-account"
+            ]
+          },
+          {
+            "group": "Admins",
+            "pages": [
+              "admins/onboard-admins",
+              "admins/inactivate-admin-account",
+              "admins/delete-admin-account"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Assessment & Evaluation",
+        "groups": [
+          {
+            "group": "Question Papers",
+            "pages": [
+              "question-papers/configure-syllabus-weightage",
+              "question-papers/configure-question-types-marks",
+              "question-papers/edit-question",
+              "question-papers/replace-question",
+              "question-papers/add-new-question",
+              "question-papers/add-new-section",
+              "question-papers/reorder-questions",
+              "question-papers/view-pdf",
+              "question-papers/download-question-paper",
+              "question-papers/add-comments",
+              "question-papers/approve"
+            ]
+          },
+          {
+            "group": "Tests & Evaluation",
+            "pages": [
+              "tests-evaluation/schedule-test",
+              "tests-evaluation/reschedule-test",
+              "tests-evaluation/cancel-test",
+              "tests-evaluation/upload-answer-sheets",
+              "tests-evaluation/share-test-results",
+              "tests-evaluation/challenge-grade"
+            ]
+          },
+          {
+            "group": "Assignments",
+            "pages": [
+              "assignments/create-upload-assignment",
+              "assignments/upload-answer-sheet"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Content & Communication",
+        "groups": [
+          {
+            "group": "Study Materials",
+            "pages": [
+              "study-materials/upload-study-material",
+              "study-materials/delete-study-material",
+              "study-materials/update-study-material"
+            ]
+          },
+          {
+            "group": "Lectures",
+            "pages": [
+              "lectures/schedule-lecture",
+              "lectures/reschedule-lecture"
+            ]
+          },
+          {
+            "group": "Notice Board",
+            "pages": [
+              "notice-board/make-announcement",
+              "notice-board/edit-announcement",
+              "notice-board/remove-announcement"
             ]
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/images/acadine-logo-big.svg",
+    "dark": "/images/acadine-logo-big.svg"
   },
   "navbar": {
     "links": [
