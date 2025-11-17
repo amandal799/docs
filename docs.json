@@ -17,6 +17,7 @@
             "group": "Getting started",
             "pages": [
               "getting-started/overview",
+              "getting-started/key-concepts",
               "getting-started/for-student",
               "getting-started/for-teacher",
               "getting-started/for-admin"
