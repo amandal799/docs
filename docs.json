@@ -33,7 +33,7 @@
               "how-to-guide/manage-batches",
               "how-to-guide/manage-courses-targets",
               "how-to-guide/manage-centres-branches",
-              "how-to-guide/generate-question-paper",
+              "question-papers/generate-question-paper",
               "how-to-guide/schedule-test",
               "how-to-guide/scan-upload-answer-sheets",
               "how-to-guide/share-test-result",
@@ -117,6 +117,7 @@
           {
             "group": "Question Papers",
             "pages": [
+              "question-papers/generate-question-paper",
               "question-papers/configure-syllabus-weightage",
               "question-papers/configure-question-types-marks",
               "question-papers/edit-question",
