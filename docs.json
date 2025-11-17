@@ -26,71 +26,6 @@
         ]
       },
       {
-        "tab": "Institute Management",
-        "groups": [
-          {
-            "group": "Batches",
-            "pages": [
-              "batches/create-batch",
-              "batches/add-students-to-batch",
-              "batches/edit-batch-details",
-              "batches/inactivate-batch",
-              "batches/delete-batch"
-            ]
-          },
-          {
-            "group": "Courses/Targets",
-            "pages": [
-              "courses-targets/create-course",
-              "courses-targets/add-subjects",
-              "courses-targets/remove-subjects",
-              "courses-targets/edit-syllabus",
-              "courses-targets/onboard-own-syllabus"
-            ]
-          },
-          {
-            "group": "Centres/Branches",
-            "pages": [
-              "centres-branches/onboard-center",
-              "centres-branches/edit-center-details",
-              "centres-branches/delete-center"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "User Management",
-        "groups": [
-          {
-            "group": "Students",
-            "pages": [
-              "students/onboard-single-student",
-              "students/onboard-students-invite-link",
-              "students/onboard-students-excel",
-              "students/move-student-to-batch",
-              "students/inactivate-student-account",
-              "students/delete-student-account"
-            ]
-          },
-          {
-            "group": "Teachers",
-            "pages": [
-              "teachers/onboard-teachers",
-              "teachers/inactivate-teacher-account",
-              "teachers/delete-teacher-account"
-            ]
-          },
-          {
-            "group": "Admins",
-            "pages": [
-              "admins/onboard-admins",
-              "admins/inactivate-admin-account",
-              "admins/delete-admin-account"
-            ]
-          }
-        ]
-      },
-      {
         "tab": "Assessment & Evaluation",
         "groups": [
           {
@@ -154,6 +89,71 @@
               "notice-board/make-announcement",
               "notice-board/edit-announcement",
               "notice-board/remove-announcement"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "User Management",
+        "groups": [
+          {
+            "group": "Students",
+            "pages": [
+              "students/onboard-single-student",
+              "students/onboard-students-invite-link",
+              "students/onboard-students-excel",
+              "students/move-student-to-batch",
+              "students/inactivate-student-account",
+              "students/delete-student-account"
+            ]
+          },
+          {
+            "group": "Teachers",
+            "pages": [
+              "teachers/onboard-teachers",
+              "teachers/inactivate-teacher-account",
+              "teachers/delete-teacher-account"
+            ]
+          },
+          {
+            "group": "Admins",
+            "pages": [
+              "admins/onboard-admins",
+              "admins/inactivate-admin-account",
+              "admins/delete-admin-account"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Institute Management",
+        "groups": [
+          {
+            "group": "Batches",
+            "pages": [
+              "batches/create-batch",
+              "batches/add-students-to-batch",
+              "batches/edit-batch-details",
+              "batches/inactivate-batch",
+              "batches/delete-batch"
+            ]
+          },
+          {
+            "group": "Courses/Targets",
+            "pages": [
+              "courses-targets/create-course",
+              "courses-targets/add-subjects",
+              "courses-targets/remove-subjects",
+              "courses-targets/edit-syllabus",
+              "courses-targets/onboard-own-syllabus"
+            ]
+          },
+          {
+            "group": "Centres/Branches",
+            "pages": [
+              "centres-branches/onboard-center",
+              "centres-branches/edit-center-details",
+              "centres-branches/delete-center"
             ]
           }
         ]
