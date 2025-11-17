@@ -22,6 +22,20 @@
               "getting-started/for-teacher",
               "getting-started/for-admin"
             ]
+          },
+          {
+            "group": "Quick Links",
+            "pages": [
+              "getting-started/quick-links/question-papers",
+              "getting-started/quick-links/tests-evaluation",
+              "getting-started/quick-links/assignments",
+              "getting-started/quick-links/study-materials",
+              "getting-started/quick-links/lectures",
+              "getting-started/quick-links/notice-board",
+              "getting-started/quick-links/students",
+              "getting-started/quick-links/teachers",
+              "getting-started/quick-links/admins"
+            ]
           }
         ]
       },
