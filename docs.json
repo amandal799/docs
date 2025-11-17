@@ -22,27 +22,6 @@
               "getting-started/for-teacher",
               "getting-started/for-admin"
             ]
-          },
-          {
-            "group": "How To Guide",
-            "pages": [
-              "how-to-guide/onboard-institute",
-              "how-to-guide/onboard-students",
-              "how-to-guide/onboard-teachers",
-              "how-to-guide/onboard-admins",
-              "how-to-guide/manage-batches",
-              "how-to-guide/manage-courses-targets",
-              "how-to-guide/manage-centres-branches",
-              "question-papers/generate-question-paper",
-              "how-to-guide/schedule-test",
-              "how-to-guide/scan-upload-answer-sheets",
-              "how-to-guide/share-test-result",
-              "how-to-guide/challenge-grade",
-              "how-to-guide/create-upload-assignment",
-              "how-to-guide/upload-study-materials",
-              "how-to-guide/make-announcement",
-              "how-to-guide/schedule-lecture"
-            ]
           }
         ]
       },
