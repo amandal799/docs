@@ -1,0 +1,303 @@
+---
+title: 'Publish Results'
+description: 'Publish annual and mid-term results for students to access via credentials'
+icon: 'award'
+---
+
+Acadine's result publishing system allows you to publish consolidated exam results (annual exams, mid-term exams, pre-boards, etc.) that students can access using unique credentials. This is ideal for publishing formal results similar to CBSE board results.
+
+<Info>
+**Result Access Portal**: Published results are accessible at [results.acadine.ai](https://results.acadine.ai)
+
+Students use their provided username and password to view their complete result marksheet.
+</Info>
+
+## Overview
+
+The result publishing workflow involves three main steps:
+
+1. **Prepare CSV files** - Download subject-wise results and create three CSV files (subject-wise marksheet, aggregated marksheet, student credentials)
+2. **Publish results** - Upload CSV files through the Publish Results interface
+3. **Activate credentials** - Bulk update student credentials so they can access results
+
+<Steps>
+  <Step title="Download Subject-Wise Test Results">
+    Download test results for each subject and batch in CSV format from your dashboard.
+
+    **What you'll get:**
+    - User ID (Acadine-generated, unique for every student)
+    - Student name
+    - Marks obtained
+    - Percentage obtained
+    - Max marks
+    - Other fields (Rank, Detailed Report Link, etc.)
+
+    <Frame>
+      <img src="/images/download-rank-list-csv.png" alt="Example of subject-wise marksheet CSV format" />
+    </Frame>
+    <Note>
+    Download results for **all subjects** in a batch before proceeding to the next step.
+    </Note>
+  </Step>
+
+  <Step title="Create Subject-Wise Marksheet CSV">
+    Create a CSV file containing subject-wise marks for all students.
+
+    **Required columns:**
+    - `User ID` (required) - Acadine-generated student ID
+    - `Subject` (required) - Subject name (e.g., Mathematics, Science, English)
+
+    **Optional columns:**
+    - `Name` - Override system-level student name
+    - `Class` - Override system-level class
+    - `Section` - Override system-level section
+    - `Theory` - Theory marks
+    - `Practical` - Practical marks
+    - `Percentage` - Subject percentage
+    - `Total` - Total marks for subject
+    - `Grade` - Letter grade
+    - Any other custom fields you want to include
+
+    **Example format:**
+
+    | User ID | Name | Class | Section | Subject | Theory | Practical | Percentage | Total | Grade |
+    |---------|------|-------|---------|---------|--------|-----------|------------|-------|-------|
+    | ENR001 | Rahul Kumar | X | A | Mathematics | 85 | 90 | 87.5 | 175 | A+ |
+    | ENR001 | Rahul Kumar | X | A | Science | 78 | 82 | 80.0 | 160 | A |
+    | ENR001 | Rahul Kumar | X | A | English | 88 | - | 88.0 | 88 | A+ |
+    | ENR002 | Priya Sharma | X | B | Mathematics | 92 | 88 | 90.0 | 180 | A+ |
+
+    <Tip>
+    **Name, Class, and Section fields** can be provided at both subject-wise level and aggregated level. Aggregated level values take precedence if provided in both places.
+    </Tip>
+  </Step>
+
+  <Step title="Create Aggregated Marksheet CSV">
+    Create a CSV file with aggregated/total marks across all subjects for each student.
+
+    **Important:** Column names should match exactly with subject-wise columns if you want them rendered in the same column at the bottom of the marksheet.
+
+    **Example format:**
+
+    | User ID | Name | Class | Section | Theory | Practical | Percentage | Grade |
+    |---------|------|-------|---------|--------|-----------|------------|-------|
+    | ENR001 | Rahul Kumar | X | A | 251 | 172 | 84.6 | A+ |
+    | ENR002 | Priya Sharma | X | B | 257 | 175 | 86.4 | A+ |
+    | ENR003 | Amit Singh | X | A | 235 | 155 | 78.0 | B+ |
+
+    <Warning>
+    Ensure column names match between subject-wise and aggregated CSVs. For example:
+    - Subject-wise: `Theory` column
+    - Aggregated: `Theory` column (same name)
+
+    These will be rendered in the same column on the final marksheet.
+    </Warning>
+  </Step>
+
+  <Step title="Create Student Credentials CSV">
+    Create a CSV file with login credentials for students to access their results.
+
+    **Required columns:**
+    - `User ID` - Acadine-generated student ID (from downloaded results)
+    - `Username` - Login username (must be unique across all students in Acadine)
+    - `Password` - Login password
+
+    **Example format:**
+
+    | User ID | Username | Password |
+    |---------|----------|----------|
+    | 38Cw66z | 38Cw66z | 38Cw66z-pass |
+    | 38Cw5Va | 38Cw5Va | 38Cw5Va-pass |
+    | 38CwAex | 38CwAex | 38CwAex-pass |
+
+    <Tip>
+    **Recommended approach**: Use the User ID as the username for simplicity. This makes it easier for students to remember their credentials.
+    </Tip>
+
+    <Warning>
+    Usernames must be **globally unique** across all students in the acadine platform.
+    </Warning>
+  </Step>
+
+  <Step title="Upload and Publish Results">
+    Navigate to the **Publish Results** screen in your admin dashboard.
+
+    1. **Enter exam name** (e.g., "Annual Exam 2026", "Pre-Board III 2026", "Mid-Term December 2025")
+    2. **Upload subject-wise marksheet CSV**
+    3. **Upload aggregated marksheet CSV**
+    4. **Review** the uploaded data
+    5. **Confirm and publish**
+    6. **Refresh the page** after a few seconds - status should change to "Published"
+
+    <Frame>
+      <img src="/images/publish-results-screen.png" alt="Example of subject-wise marksheet CSV format" />
+    </Frame>
+
+    <Note>
+    The exam name appears on the result marksheet, so choose a clear, descriptive name.
+    </Note>
+  </Step>
+
+  <Step title="Update Student Credentials">
+    After publishing results, update student credentials so they can log in.
+
+    1. Go to the **Students** tab in your dashboard
+    2. Click **Bulk Update**
+    3. Select **Update Credentials**
+    4. Upload the credentials CSV you created in Step 4
+    5. Wait a few seconds for processing to complete
+
+    <Frame>
+      <img src="/images/update-credentials.png" alt="Example of subject-wise marksheet CSV format" />
+    </Frame>
+
+    <Info>
+    After credentials are updated, students can immediately access their results at [results.acadine.ai](https://results.acadine.ai)
+    </Info>
+  </Step>
+
+  <Step title="Access Results">
+    Students can now view their results:
+
+    1. Visit [results.acadine.ai](https://results.acadine.ai)
+    2. Enter their **username** and **password**
+    3. View their complete result marksheet with subject-wise and aggregated data
+
+    <Frame>
+      <img src="/images/results-portal.png" alt="Example of subject-wise marksheet CSV format" />
+    </Frame>
+
+    <Tip>
+    Share the result portal URL and credential information with students via your regular communication channels (email, SMS, notice board, etc.).
+    </Tip>
+  </Step>
+</Steps>
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="CSV File Preparation">
+    - Ensure User IDs match exactly across all three CSV files
+    - Remove any special characters from column headers
+    - Verify all required columns are present
+    - Check for duplicate usernames before upload
+    - Use consistent decimal formatting (e.g., 87.5, not 87.50)
+  </Accordion>
+
+  <Accordion title="Credential Management">
+    - Use User IDs as usernames for consistency
+    - Create strong but memorable passwords
+    - Keep a backup copy of the credentials CSV
+    - Verify credentials are uploaded before announcing results
+    - Consider using a pattern for passwords (e.g., UserID-pass)
+  </Accordion>
+
+  <Accordion title="Data Verification">
+    - Review uploaded data carefully before publishing
+    - Cross-check totals and percentages
+    - Verify student names and class/section information
+    - Test with sample credentials before full rollout
+    - Keep source CSV files for reference
+  </Accordion>
+
+  <Accordion title="Result Publishing">
+    - Use clear, descriptive exam names
+    - Publish results during off-peak hours
+    - Announce result availability after credential verification
+    - Monitor the system after publishing for any issues
+    - Have support ready for credential-related queries
+  </Accordion>
+</AccordionGroup>
+
+## CSV Column Reference
+
+### Subject-Wise Marksheet
+
+| Column | Required | Description |
+|--------|----------|-------------|
+| User ID | Yes | Acadine-generated unique student identifier |
+| Subject | Yes | Subject name (Mathematics, Science, etc.) |
+| Name | No | Student name (overrides system name if provided) |
+| Class | No | Class/Grade (overrides system value if provided) |
+| Section | No | Section (overrides system value if provided) |
+| Theory | No | Theory/written exam marks |
+| Practical | No | Practical/lab exam marks |
+| Percentage | No | Subject percentage |
+| Total | No | Total marks for the subject |
+| Grade | No | Letter grade (A+, A, B+, etc.) |
+| *Custom* | No | Any additional custom columns you want to display |
+
+### Aggregated Marksheet
+
+| Column | Required | Description |
+|--------|----------|-------------|
+| User ID | Yes | Acadine-generated unique student identifier |
+| Name | No | Student name (takes precedence over subject-wise) |
+| Class | No | Class/Grade (takes precedence over subject-wise) |
+| Section | No | Section (takes precedence over subject-wise) |
+| Theory | No | Total theory marks across all subjects |
+| Practical | No | Total practical marks across all subjects |
+| Percentage | No | Overall percentage |
+| Grade | No | Overall grade |
+| *Matching columns* | No | Any column name matching subject-wise columns will be displayed together |
+
+### Credentials
+
+| Column | Required | Description |
+|--------|----------|-------------|
+| User ID | Yes | Must match User ID in marksheet CSVs |
+| Username | Yes | Login username (must be globally unique) |
+| Password | Yes | Login password |
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Results not appearing after publish">
+    - Refresh the page after 10-15 seconds
+    - Check if status shows "Published"
+    - Verify CSV files were uploaded correctly
+    - Check for any error messages in the upload process
+  </Accordion>
+
+  <Accordion title="Student cannot login">
+    - Verify credentials were uploaded after publishing results
+    - Check that username is correct (case-sensitive)
+    - Ensure User ID in credentials CSV matches published results
+    - Confirm username is unique across all students
+  </Accordion>
+
+  <Accordion title="Missing or incorrect data in results">
+    - Verify CSV column names match exactly (case-sensitive)
+    - Check for extra spaces in column headers
+    - Ensure User IDs are consistent across all CSV files
+    - Validate data format (numbers vs text)
+  </Accordion>
+
+  <Accordion title="Columns not aligning correctly">
+    - Ensure matching column names between subject-wise and aggregated CSVs
+    - Check spelling and case sensitivity
+    - Remove extra spaces from column headers
+    - Verify CSV file encoding (UTF-8 recommended)
+  </Accordion>
+</AccordionGroup>
+
+## Example Workflow
+
+Here's a complete example for publishing Annual Exam 2026 results for Class X:
+
+1. **Download results** for Mathematics, Science, English, Hindi, Social Science from dashboard
+2. **Create subject-wise CSV** with all subjects and students
+3. **Create aggregated CSV** with total marks and overall percentage
+4. **Create credentials CSV** using User IDs as usernames
+5. **Navigate to Publish Results** → Enter "Annual Exam 2026"
+6. **Upload** both marksheet CSVs → Review → Publish
+7. **Wait 10 seconds** → Refresh → Verify "Published" status
+8. **Go to Students tab** → Bulk Update → Update Credentials → Upload credentials CSV
+9. **Test login** at results.acadine.ai with sample credentials
+10. **Announce** result availability to students
+
+---
+
+<Note>
+Need help with result publishing? Contact us at [support@acadine.ai](mailto:support@acadine.ai)
+</Note>

@@ -70,6 +70,7 @@
               "tests-evaluation/cancel-test",
               "tests-evaluation/upload-answer-sheets",
               "tests-evaluation/share-test-results",
+              "tests-evaluation/publish-results",
               "tests-evaluation/challenge-grade"
             ]
           },
