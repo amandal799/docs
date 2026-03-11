@@ -4,7 +4,7 @@ description: 'Publish annual and mid-term results for students to access via cre
 icon: 'award'
 ---
 
-Acadine's result publishing system allows you to publish consolidated exam results (annual exams, mid-term exams, pre-boards, etc.) that students can access using unique credentials. This is ideal for publishing formal results similar to CBSE board results.
+Acadine's result publishing system allows you to publish consolidated exam results (annual exams, mid-term exams, pre-boards, etc.) that students can access using unique credentials. Design your report cards exactly how you want them with complete creative freedom.
 
 <Info>
 **Result Access Portal**: Published results are accessible at [results.acadine.ai](https://results.acadine.ai)
@@ -14,142 +14,140 @@ Students use their provided username and password to view their complete result 
 
 ## Overview
 
-The result publishing workflow involves three main steps:
+The result publishing workflow is simple and flexible:
 
-1. **Prepare CSV files** - Download subject-wise results and create three CSV files (subject-wise marksheet, aggregated marksheet, student credentials)
-2. **Publish results** - Upload CSV files through the Publish Results interface
-3. **Activate credentials** - Bulk update student credentials so they can access results
+1. **Prepare Excel file** - One file with all student data (only requirement: User ID column)
+2. **Design DOCX template** - Create your report card design with placeholders for data
+3. **Upload and publish** - Upload both files, configure optional QR code, and publish
+4. **Activate credentials** - Bulk update student credentials so they can access results
 
 <Steps>
-  <Step title="Download Subject-Wise Test Results">
-    Download test results for each subject and batch in CSV format from your dashboard.
+  <Step title="Prepare Your Excel File">
+    Create a single Excel file with all student data. The only requirement is including a **User ID** column.
 
-    **What you'll get:**
-    - User ID (Acadine-generated, unique for every student)
-    - Student name
-    - Marks obtained
-    - Percentage obtained
-    - Max marks
-    - Other fields (Rank, Detailed Report Link, etc.)
+    **Requirements:**
+    - Must include a **User ID** column (Acadine-generated student IDs)
+    - Can have any other columns in any order (Name, Class, Subjects, Marks, Grades, etc.)
+    - Column names can be anything you want
+    - One row per student (rows without User ID are ignored)
+    - If multiple sheets exist, only the first sheet will be used
 
-    <Frame>
-      <img src="/images/download-rank-list-csv.png" alt="Example of subject-wise marksheet CSV format" />
-    </Frame>
+    **Example Excel Structure:**
+
+    | A | B | C | D | E | F | G | H | I | J |
+    |---|---|---|---|---|---|---|---|---|---|
+    | **User ID** | **Name** | **Class** | **Section** | **Roll No** | **English** | **Mathematics** | **Science** | **Total** | **Percentage** |
+    | 38AcRWc | PRAGYASHREE MISHRA | 8A | DS | 5878 | 85 | 92 | 88 | 265 | 88.3 |
+    | 38AcRjK | SRISHTI KUMARI | 8A | Gargi | 6449 | 78 | 85 | 81 | 244 | 81.3 |
+    | 38Ac537 | RUMMAN KHAN | 8C | Ramakrishna | 5676 | 90 | 88 | 94 | 272 | 90.7 |
+
     <Note>
-    Download results for **all subjects** in a batch before proceeding to the next step.
+    **Column letters (A, B, C...)** are how you'll reference data in your DOCX template. Keep track of which column contains which data.
     </Note>
-  </Step>
-
-  <Step title="Create Subject-Wise Marksheet CSV">
-    Create a CSV file containing subject-wise marks for all students.
-
-    **Required columns:**
-    - `User ID` (required) - Acadine-generated student ID
-    - `Subject` (required) - Subject name (e.g., Mathematics, Science, English)
-
-    **Optional columns:**
-    - `Name` - Override system-level student name
-    - `Class` - Override system-level class
-    - `Section` - Override system-level section
-    - `Theory` - Theory marks
-    - `Practical` - Practical marks
-    - `Percentage` - Subject percentage
-    - `Total` - Total marks for subject
-    - `Grade` - Letter grade
-    - Any other custom fields you want to include
-
-    **Example format:**
-
-    | User ID | Name | Class | Section | Subject | Theory | Practical | Percentage | Total | Grade |
-    |---------|------|-------|---------|---------|--------|-----------|------------|-------|-------|
-    | ENR001 | Rahul Kumar | X | A | Mathematics | 85 | 90 | 87.5 | 175 | A+ |
-    | ENR001 | Rahul Kumar | X | A | Science | 78 | 82 | 80.0 | 160 | A |
-    | ENR001 | Rahul Kumar | X | A | English | 88 | - | 88.0 | 88 | A+ |
-    | ENR002 | Priya Sharma | X | B | Mathematics | 92 | 88 | 90.0 | 180 | A+ |
 
     <Tip>
-    **Name, Class, and Section fields** can be provided at both subject-wise level and aggregated level. Aggregated level values take precedence if provided in both places.
+    You can include as many columns as you need - theory marks, practical marks, grades, attendance, remarks, etc. There are no restrictions on column structure.
     </Tip>
   </Step>
 
-  <Step title="Create Aggregated Marksheet CSV">
-    Create a CSV file with aggregated/total marks across all subjects for each student.
+  <Step title="Create Your DOCX Report Card Template">
+    Design your report card template exactly as you want it to appear. Use placeholders to reference data from your Excel file.
 
-    **Important:** Column names should match exactly with subject-wise columns if you want them rendered in the same column at the bottom of the marksheet.
+    **Template Design:**
+    - Use complete creative freedom (formatting, tables, images, logos, colors, fonts)
+    - Reference Excel data using column letters: `{{A}}`, `{{B}}`, `{{AA}}`, `{{AB}}`, etc.
+    - Add `{{REPORT_QR_CODE}}` placeholder for QR code to detailed reports (optional)
+    - Add `{{r REPORT_LINK}}` placeholder for clickable hyperlink to detailed reports (optional)
+    - Include school branding, headers, footers, signatures as desired
 
-    **Example format:**
+    **Placeholder Syntax:**
 
-    | User ID | Name | Class | Section | Theory | Practical | Percentage | Grade |
-    |---------|------|-------|---------|--------|-----------|------------|-------|
-    | ENR001 | Rahul Kumar | X | A | 251 | 172 | 84.6 | A+ |
-    | ENR002 | Priya Sharma | X | B | 257 | 175 | 86.4 | A+ |
-    | ENR003 | Amit Singh | X | A | 235 | 155 | 78.0 | B+ |
+    | Placeholder | Description | Example |
+    |-------------|-------------|---------|
+    | `{{A}}` | Single letter column | References column A (User ID) |
+    | `{{B}}` | Single letter column | References column B (Name) |
+    | `{{AA}}` | Multi-letter column | References column AA |
+    | `{{REPORT_QR_CODE}}` | QR code for detailed reports | Inserts QR code image (optional) |
+    | `{{r REPORT_LINK}}` | Clickable hyperlink to detailed reports | Inserts clickable link (optional) |
+
+    <Tip>
+    **How Placeholders Work:**
+
+    If Excel Column B contains "PRAGYASHREE MISHRA":
+    - Template: `Name: {{B}}`
+    - Result: `Name: PRAGYASHREE MISHRA`
+    </Tip>
 
     <Warning>
-    Ensure column names match between subject-wise and aggregated CSVs. For example:
-    - Subject-wise: `Theory` column
-    - Aggregated: `Theory` column (same name)
-
-    These will be rendered in the same column on the final marksheet.
+    - Column letters are **case-sensitive**: `{{A}}` and `{{a}}` are different
+    - For hyperlinks, use `{{r REPORT_LINK}}` (note the `r` prefix), not `{{REPORT_LINK}}`
+    - Ensure placeholder syntax is exact: `{{A}}` (correct) vs `{A}` or `((A))` (incorrect)
     </Warning>
   </Step>
 
-  <Step title="Create Student Credentials CSV">
-    Create a CSV file with login credentials for students to access their results.
+  <Step title="Upload and Publish Results">
+    Navigate to the **Publish Results** screen in your admin dashboard and upload your files.
 
-    **Required columns:**
-    - `User ID` - Acadine-generated student ID (from downloaded results)
-    - `Username` - Login username (must be unique across all students in Acadine)
-    - `Password` - Login password
+    <Frame>
+      <img src="/images/publish-results-screen.png" alt="Publish results screen" />
+    </Frame>
 
-    **Example format:**
+    **Publishing Steps:**
+
+    1. **Enter exam name** (e.g., "Annual Exam 2026", "Pre-Board III 2026", "Mid-Term December 2025")
+    2. **Upload Excel file** - Select your prepared Excel file
+    3. **Upload DOCX template** - Select your report card template
+    4. **Select tests for detailed reports** (if using `{{REPORT_QR_CODE}}` or `{{r REPORT_LINK}}` placeholders):
+       - Choose test(s) that were evaluated through the Acadine platform
+       - Students can scan the QR code or click the link to view detailed test analysis
+       - Skip this if you don't have these placeholders in your template
+    5. **Review** the uploaded data
+    6. **Confirm and publish**
+    7. **Refresh the page** after a few seconds - status should change to "Published"
+    <Note>
+    The exam name appears on the result marksheet, so choose a clear, descriptive name.
+    </Note>
+
+    <Info>
+    **Detailed Report Features**: Add `{{REPORT_QR_CODE}}` for QR codes or `{{r REPORT_LINK}}` for clickable hyperlinks. You'll select which tests to link during the publish step.
+    </Info>
+  </Step>
+
+  <Step title="Update Student Credentials">
+    After publishing results, update student credentials so they can log in.
+
+    **Credential Setup:**
+
+    1. Go to the **Students** tab in your dashboard
+    2. Click **Bulk Update**
+    3. Select **Update Credentials**
+    4. Upload the credentials CSV file
+    5. Wait a few seconds for processing to complete
+
+    <Frame>
+      <img src="/images/update-credentials.png" alt="Update credentials screen" />
+    </Frame>
+
+    **Credentials CSV Format:**
 
     | User ID | Username | Password |
     |---------|----------|----------|
-    | 38Cw66z | 38Cw66z | 38Cw66z-pass |
-    | 38Cw5Va | 38Cw5Va | 38Cw5Va-pass |
-    | 38CwAex | 38CwAex | 38CwAex-pass |
+    | 38AcRWc | 38AcRWc | 38AcRWc-pass |
+    | 38AcRjK | 38AcRjK | 38AcRjK-pass |
+    | 38Ac537 | 38Ac537 | 38Ac537-pass |
+
+    **Required columns:**
+    - `User ID` - Must match User ID from Excel file
+    - `Username` - Login username (must be globally unique across all students in Acadine)
+    - `Password` - Login password
 
     <Tip>
     **Recommended approach**: Use the User ID as the username for simplicity. This makes it easier for students to remember their credentials.
     </Tip>
 
     <Warning>
-    Usernames must be **globally unique** across all students in the acadine platform.
+    Usernames must be **globally unique** across all students in the Acadine platform.
     </Warning>
-  </Step>
-
-  <Step title="Upload and Publish Results">
-    Navigate to the **Publish Results** screen in your admin dashboard.
-
-    1. **Enter exam name** (e.g., "Annual Exam 2026", "Pre-Board III 2026", "Mid-Term December 2025")
-    2. **Upload subject-wise marksheet CSV**
-    3. **Upload aggregated marksheet CSV**
-    4. **Review** the uploaded data
-    5. **Confirm and publish**
-    6. **Refresh the page** after a few seconds - status should change to "Published"
-
-    <Frame>
-      <img src="/images/publish-results-screen.png" alt="Example of subject-wise marksheet CSV format" />
-    </Frame>
-
-    <Note>
-    The exam name appears on the result marksheet, so choose a clear, descriptive name.
-    </Note>
-  </Step>
-
-  <Step title="Update Student Credentials">
-    After publishing results, update student credentials so they can log in.
-
-    1. Go to the **Students** tab in your dashboard
-    2. Click **Bulk Update**
-    3. Select **Update Credentials**
-    4. Upload the credentials CSV you created in Step 4
-    5. Wait a few seconds for processing to complete
-
-    <Frame>
-      <img src="/images/update-credentials.png" alt="Example of subject-wise marksheet CSV format" />
-    </Frame>
 
     <Info>
     After credentials are updated, students can immediately access their results at [results.acadine.ai](https://results.acadine.ai)
@@ -161,10 +159,10 @@ The result publishing workflow involves three main steps:
 
     1. Visit [results.acadine.ai](https://results.acadine.ai)
     2. Enter their **username** and **password**
-    3. View their complete result marksheet with subject-wise and aggregated data
+    3. View their complete result marksheet with all data from your template
 
     <Frame>
-      <img src="/images/results-portal.png" alt="Example of subject-wise marksheet CSV format" />
+      <img src="/images/results-portal.png" alt="Results portal" />
     </Frame>
 
     <Tip>
@@ -173,15 +171,58 @@ The result publishing workflow involves three main steps:
   </Step>
 </Steps>
 
+## Understanding Column References
+
+### How Excel Columns Map to Placeholders
+
+Excel columns are labeled with letters: A, B, C... Z, AA, AB... AZ, BA, BB... etc.
+
+**Single Letter Columns (A-Z):**
+- Column A → `{{A}}`
+- Column B → `{{B}}`
+- Column Z → `{{Z}}`
+
+**Double Letter Columns (AA-ZZ):**
+- Column AA → `{{AA}}`
+- Column AB → `{{AB}}`
+- Column AZ → `{{AZ}}`
+- Column BA → `{{BA}}`
+
+**Example Mapping:**
+
+| Excel | Placeholder | Sample Data | Template Usage |
+|-------|-------------|-------------|----------------|
+| Column A | `{{A}}` | 38AcRWc | User ID: `{{A}}` |
+| Column B | `{{B}}` | PRAGYASHREE MISHRA | Name: `{{B}}` |
+| Column C | `{{C}}` | 8A | Class: `{{C}}` |
+| Column F | `{{F}}` | 85 | English: `{{F}}` marks |
+| Column AA | `{{AA}}` | Excellent | Remarks: `{{AA}}` |
+
+<Note>
+You can reference **any column** in your Excel file. There's no limit to the number of columns you can use.
+</Note>
+
 ## Best Practices
 
 <AccordionGroup>
-  <Accordion title="CSV File Preparation">
-    - Ensure User IDs match exactly across all three CSV files
-    - Remove any special characters from column headers
-    - Verify all required columns are present
-    - Check for duplicate usernames before upload
-    - Use consistent decimal formatting (e.g., 87.5, not 87.50)
+  <Accordion title="Excel File Preparation">
+    - Ensure **User ID** column exists and is correctly populated
+    - Use clear, descriptive column headers for your reference
+    - Verify data types are consistent in each column (numbers as numbers, text as text)
+    - One row per student (duplicate User IDs may cause issues)
+    - Remove any completely empty rows
+    - If using multiple sheets, ensure your data is on the **first sheet**
+    - Keep a backup copy of your Excel file
+  </Accordion>
+
+  <Accordion title="DOCX Template Design">
+    - Use column letters for placeholders: `{{A}}`, `{{B}}`, `{{AA}}`
+    - Test template with sample data before publishing to all students
+    - Include school logo, header, and branding as desired
+    - Use tables for structured data presentation (marks, grades, subjects)
+    - For QR codes, ensure `{{REPORT_QR_CODE}}` has adequate space
+    - Keep a backup copy of your template
+    - Verify all placeholder references match your Excel column structure
   </Accordion>
 
   <Accordion title="Credential Management">
@@ -194,60 +235,52 @@ The result publishing workflow involves three main steps:
 
   <Accordion title="Data Verification">
     - Review uploaded data carefully before publishing
-    - Cross-check totals and percentages
-    - Verify student names and class/section information
+    - Cross-check Excel data with template placeholders
+    - Verify all column references are correct (A, B, C... match intended data)
     - Test with sample credentials before full rollout
-    - Keep source CSV files for reference
+    - Keep source Excel and DOCX files for reference
   </Accordion>
 
   <Accordion title="Result Publishing">
     - Use clear, descriptive exam names
-    - Publish results during off-peak hours
+    - Publish results during off-peak hours if expecting high traffic
     - Announce result availability after credential verification
     - Monitor the system after publishing for any issues
     - Have support ready for credential-related queries
   </Accordion>
 </AccordionGroup>
 
-## CSV Column Reference
+## File Requirements Reference
 
-### Subject-Wise Marksheet
+### Excel File
 
-| Column | Required | Description |
-|--------|----------|-------------|
-| User ID | Yes | Acadine-generated unique student identifier |
-| Subject | Yes | Subject name (Mathematics, Science, etc.) |
-| Name | No | Student name (overrides system name if provided) |
-| Class | No | Class/Grade (overrides system value if provided) |
-| Section | No | Section (overrides system value if provided) |
-| Theory | No | Theory/written exam marks |
-| Practical | No | Practical/lab exam marks |
-| Percentage | No | Subject percentage |
-| Total | No | Total marks for the subject |
-| Grade | No | Letter grade (A+, A, B+, etc.) |
-| *Custom* | No | Any additional custom columns you want to display |
+| Requirement | Description |
+|-------------|-------------|
+| **Required Column** | **User ID** - Must match Acadine-generated student IDs |
+| **Other Columns** | Any columns you need (Name, Class, Subjects, Marks, Grades, Attendance, etc.) |
+| **Column Names** | Can be anything - you'll reference them by letter (A, B, C...) in template |
+| **Data Format** | One row per student |
+| **Sheet Requirement** | Single sheet (or first sheet will be used if multiple exist) |
+| **File Format** | .xlsx or .xls |
 
-### Aggregated Marksheet
+### DOCX Template
 
-| Column | Required | Description |
-|--------|----------|-------------|
-| User ID | Yes | Acadine-generated unique student identifier |
-| Name | No | Student name (takes precedence over subject-wise) |
-| Class | No | Class/Grade (takes precedence over subject-wise) |
-| Section | No | Section (takes precedence over subject-wise) |
-| Theory | No | Total theory marks across all subjects |
-| Practical | No | Total practical marks across all subjects |
-| Percentage | No | Overall percentage |
-| Grade | No | Overall grade |
-| *Matching columns* | No | Any column name matching subject-wise columns will be displayed together |
+| Element | Description |
+|---------|-------------|
+| **Placeholders** | Use `{{LETTER}}` format to reference Excel columns |
+| **Column Reference** | Single letters: `{{A}}`, `{{B}}` / Multi-letter: `{{AA}}`, `{{AB}}` |
+| **QR Code** | `{{REPORT_QR_CODE}}` - Optional placeholder for detailed report QR code |
+| **Report Link** | `{{r REPORT_LINK}}` - Optional placeholder for clickable hyperlink |
+| **Design Freedom** | Complete creative control - formatting, tables, images, logos, colors, fonts |
+| **File Format** | .docx |
 
-### Credentials
+### Credentials CSV
 
 | Column | Required | Description |
 |--------|----------|-------------|
-| User ID | Yes | Must match User ID in marksheet CSVs |
-| Username | Yes | Login username (must be globally unique) |
-| Password | Yes | Login password |
+| **User ID** | Yes | Must match User ID in Excel file |
+| **Username** | Yes | Login username (must be globally unique) |
+| **Password** | Yes | Login password |
 
 ## Troubleshooting
 
@@ -255,46 +288,41 @@ The result publishing workflow involves three main steps:
   <Accordion title="Results not appearing after publish">
     - Refresh the page after 10-15 seconds
     - Check if status shows "Published"
-    - Verify CSV files were uploaded correctly
+    - Verify both Excel and DOCX files were uploaded correctly
     - Check for any error messages in the upload process
+    - Ensure Excel file contains User ID column
   </Accordion>
 
   <Accordion title="Student cannot login">
     - Verify credentials were uploaded after publishing results
     - Check that username is correct (case-sensitive)
     - Ensure User ID in credentials CSV matches published results
-    - Confirm username is unique across all students
+    - Confirm username is unique across all students in Acadine
+  </Accordion>
+
+  <Accordion title="Placeholders not replacing correctly">
+    - Verify column letters match Excel columns (A, B, C... AA, AB...)
+    - Check for typos in placeholder syntax: `{{A}}` not `{A}` or `((A)}`
+    - Ensure Excel file has data in referenced columns
+    - Column letters are **case-sensitive**: use uppercase `{{A}}` not `{{a}}`
+    - Verify Excel data doesn't have extra spaces or special characters
   </Accordion>
 
   <Accordion title="Missing or incorrect data in results">
-    - Verify CSV column names match exactly (case-sensitive)
-    - Check for extra spaces in column headers
-    - Ensure User IDs are consistent across all CSV files
-    - Validate data format (numbers vs text)
+    - Verify Excel User IDs match Acadine-generated User IDs
+    - Check that referenced columns contain expected data
+    - Ensure DOCX placeholders use correct column letters
+    - Review Excel file for empty cells or formatting issues
+    - Check if data is on the first sheet (if multiple sheets exist)
   </Accordion>
 
-  <Accordion title="Columns not aligning correctly">
-    - Ensure matching column names between subject-wise and aggregated CSVs
-    - Check spelling and case sensitivity
-    - Remove extra spaces from column headers
-    - Verify CSV file encoding (UTF-8 recommended)
+  <Accordion title="QR code or report link not appearing">
+    - Verify template contains `{{REPORT_QR_CODE}}` or `{{r REPORT_LINK}}` placeholder
+    - Check that you selected tests during the publish step
+    - For hyperlinks, ensure you used `{{r REPORT_LINK}}` (with `r` prefix), not `{{REPORT_LINK}}`
+    - For QR codes, leave adequate space around the placeholder in template
   </Accordion>
 </AccordionGroup>
-
-## Example Workflow
-
-Here's a complete example for publishing Annual Exam 2026 results for Class X:
-
-1. **Download results** for Mathematics, Science, English, Hindi, Social Science from dashboard
-2. **Create subject-wise CSV** with all subjects and students
-3. **Create aggregated CSV** with total marks and overall percentage
-4. **Create credentials CSV** using User IDs as usernames
-5. **Navigate to Publish Results** → Enter "Annual Exam 2026"
-6. **Upload** both marksheet CSVs → Review → Publish
-7. **Wait 10 seconds** → Refresh → Verify "Published" status
-8. **Go to Students tab** → Bulk Update → Update Credentials → Upload credentials CSV
-9. **Test login** at results.acadine.ai with sample credentials
-10. **Announce** result availability to students
 
 ---
 
